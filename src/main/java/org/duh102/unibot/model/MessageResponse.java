@@ -8,6 +8,9 @@ public class MessageResponse {
     public MessageResponse() {
         message = new RichText();
     }
+    public MessageResponse(RichText message) {
+        this.message = message;
+    }
     public MessageResponse(String text) {
         message = new RichText(text);
     }

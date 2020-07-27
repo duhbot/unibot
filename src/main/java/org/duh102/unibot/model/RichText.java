@@ -1,5 +1,7 @@
 package org.duh102.unibot.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,7 +11,10 @@ public class RichText {
     private List<RichTextComponent> components;
 
     public RichText() {
-        components = new ArrayList<RichTextComponent>();
+        components = new ArrayList<>();
+    }
+    public RichText(List<RichTextComponent> components) {
+        this.components = components;
     }
     public RichText(String text) {
         components = Collections.singletonList(new RichTextComponent(text));
@@ -22,5 +27,14 @@ public class RichText {
 
     public void setComponents(List<RichTextComponent> components) {
         this.components = components;
+    }
+
+    @JsonIgnore
+    public String getFormattingRemoved() {
+        StringBuilder builder = new StringBuilder();
+        for(RichTextComponent component : components) {
+            builder.append(component.getRawString());
+        }
+        return builder.toString();
     }
 }
