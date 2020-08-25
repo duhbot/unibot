@@ -1,5 +1,5 @@
 package org.duh102.unibot.server;
-import org.duh102.unibot.model.MessageEvent;
+import org.duh102.unibot.model.events.MessageEvent;
 import org.duh102.unibot.model.MessageResponse;
 import org.duh102.unibot.model.RichText;
 import org.duh102.unibot.model.RichTextComponent;

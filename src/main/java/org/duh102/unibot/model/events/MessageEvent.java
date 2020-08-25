@@ -1,6 +1,9 @@
-package org.duh102.unibot.model;
+package org.duh102.unibot.model.events;
 
-public class MessageEvent {
+import org.duh102.unibot.model.RichText;
+import org.duh102.unibot.model.sources.EventSource;
+
+public class MessageEvent implements Event {
     private RichText message;
 
     public MessageEvent() {
@@ -17,5 +20,10 @@ public class MessageEvent {
 
     public void setMessage(RichText message) {
         this.message = message;
+    }
+
+    @Override
+    public EventSource getSource() {
+        return null;
     }
 }
