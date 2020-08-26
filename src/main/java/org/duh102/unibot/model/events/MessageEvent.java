@@ -1,29 +1,25 @@
 package org.duh102.unibot.model.events;
 
 import org.duh102.unibot.model.RichText;
-import org.duh102.unibot.model.sources.EventSource;
+import org.duh102.unibot.model.sources.User;
 
 public class MessageEvent implements Event {
     private RichText message;
+    private User source;
 
     public MessageEvent() {
-        message = new RichText();
     }
-    public MessageEvent(String text) {
-        message = new RichText(text);
+    public MessageEvent(User source, RichText message) {
+        this.source = source;
+        this.message = message;
     }
-
 
     public RichText getMessage() {
         return message;
     }
 
-    public void setMessage(RichText message) {
-        this.message = message;
-    }
-
     @Override
-    public EventSource getSource() {
-        return null;
+    public User getSource() {
+        return source;
     }
 }
