@@ -2,12 +2,12 @@ package org.duh102.unibot.model.sources.identifiers;
 
 import org.duh102.unibot.model.exception.ServiceSpecificUnsupportedException;
 
-public class IRCIdentifier implements UserIdentifier {
+public class IRCUserIdentifier extends IRCServiceSpecific implements UserIdentifier {
     private String nickname;
     private String username;
     private String host;
 
-    public IRCIdentifier(String nickname, String username, String host) {
+    public IRCUserIdentifier(String nickname, String username, String host) {
         this.nickname = nickname;
         this.username = username;
         this.host = host;
@@ -35,17 +35,11 @@ public class IRCIdentifier implements UserIdentifier {
 
     @Override
     public String toString() {
-        return nickname + "!" + username + "@" + host;
-    }
-
-    @Override
-    public String getServiceIdentifierString() {
-        return getServiceIdentifier().name();
-    }
-
-    @Override
-    public ServiceIdentifier getServiceIdentifier() {
-        return ServiceIdentifier.IRC;
+        try {
+            return getUniqueId();
+        } catch (ServiceSpecificUnsupportedException e) {
+            return nickname;
+        }
     }
 
     @Override
@@ -56,5 +50,10 @@ public class IRCIdentifier implements UserIdentifier {
     @Override
     public String getReferenceName() throws ServiceSpecificUnsupportedException {
         throw new ServiceSpecificUnsupportedException("IRC does not support user links");
+    }
+
+    @Override
+    public String getUniqueId() throws ServiceSpecificUnsupportedException {
+        throw new ServiceSpecificUnsupportedException("IRC does not support unique IDs for users");
     }
 }

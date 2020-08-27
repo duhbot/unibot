@@ -14,4 +14,11 @@ public interface UserIdentifier extends Comparable<UserIdentifier>, ServiceSpeci
      * @return A string that contains the "linkable" version of the user id
      */
     String getReferenceName() throws ServiceSpecificUnsupportedException;
+
+    /**
+     * Get the unique identifier of the user
+     * @return A string representation that contains the unique id of the user
+     * @throws ServiceSpecificUnsupportedException if the backing service does not have such a concept
+     */
+    String getUniqueId() throws ServiceSpecificUnsupportedException;
 }

@@ -2,12 +2,12 @@ package org.duh102.unibot.model.sources.identifiers;
 
 import org.duh102.unibot.model.exception.ServiceSpecificUnsupportedException;
 
-public class DiscordIdentifier implements UserIdentifier {
+public class DiscordUserIdentifier extends DiscordServiceSpecific implements UserIdentifier {
     private String uniqueID;
     private String username;
     private int discriminator;
 
-    public DiscordIdentifier(String uniqueID, String username, int discriminator) {
+    public DiscordUserIdentifier(String uniqueID, String username, int discriminator) {
         this.uniqueID = uniqueID;
         this.username = username;
         this.discriminator = discriminator;
@@ -16,6 +16,15 @@ public class DiscordIdentifier implements UserIdentifier {
     @Override
     public String getDisplayName() {
         return username;
+    }
+
+    public int getDiscriminator() {
+        return discriminator;
+    }
+
+    @Override
+    public String getUniqueId() throws ServiceSpecificUnsupportedException {
+        return uniqueID;
     }
 
     @Override
@@ -34,15 +43,5 @@ public class DiscordIdentifier implements UserIdentifier {
             return getServiceIdentifier().compareTo(other.getServiceIdentifier());
         }
         return toString().compareTo(other.toString());
-    }
-
-    @Override
-    public String getServiceIdentifierString() {
-        return getServiceIdentifier().name();
-    }
-
-    @Override
-    public ServiceIdentifier getServiceIdentifier() {
-        return ServiceIdentifier.DISCORD;
     }
 }
