@@ -1,3 +1,6 @@
 /.idea
 /target
+/Server/target
+/Model/target
 /json-test
+nohup.out

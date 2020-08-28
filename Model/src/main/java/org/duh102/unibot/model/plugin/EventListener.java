@@ -1,4 +1,4 @@
-package org.duh102.unibot.plugin;
+package org.duh102.unibot.model.plugin;
 
 import org.duh102.unibot.model.events.Event;
 import org.pf4j.ExtensionPoint;

@@ -1,9 +1,10 @@
 package org.duh102.unibot.server;
-import org.duh102.unibot.model.events.MessageEvent;
+
 import org.duh102.unibot.model.MessageResponse;
+import org.duh102.unibot.model.events.MessageEvent;
 import org.duh102.unibot.model.events.PrivateMessageEvent;
-import org.duh102.unibot.plugin.MessageEventListener;
-import org.duh102.unibot.plugin.PrivateMessageEventListener;
+import org.duh102.unibot.model.plugin.MessageEventListener;
+import org.duh102.unibot.model.plugin.PrivateMessageEventListener;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;

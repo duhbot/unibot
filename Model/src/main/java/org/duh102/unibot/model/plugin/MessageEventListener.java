@@ -1,4 +1,4 @@
-package org.duh102.unibot.plugin;
+package org.duh102.unibot.model.plugin;
 
 import org.duh102.unibot.model.MessageResponse;
 import org.duh102.unibot.model.events.MessageEvent;
