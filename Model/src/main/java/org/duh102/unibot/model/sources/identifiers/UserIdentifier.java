@@ -1,7 +1,17 @@
 package org.duh102.unibot.model.sources.identifiers;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.duh102.unibot.model.exception.ServiceSpecificUnsupportedException;
 
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "subtype")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = IRCUserIdentifier.class, name = "irc"),
+        @JsonSubTypes.Type(value = DiscordUserIdentifier.class, name = "discord")
+})
 public interface UserIdentifier extends Comparable<UserIdentifier>, ServiceSpecific {
     /**
      * Get the nice display name for a user

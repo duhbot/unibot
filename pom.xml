@@ -24,5 +24,12 @@
             <artifactId>pf4j</artifactId>
             <version>3.4.0</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.jboss.resteasy/resteasy-jackson2-provider -->
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jackson2-provider</artifactId>
+            <version>${resteasy.version}</version>
+        </dependency>
     </dependencies>
 </project>

@@ -18,6 +18,14 @@ public class ChatChannel implements EventSource {
         this.users = new ArrayList<>(users);
     }
 
+    public ChatChannelIdentifier getIdentifier() {
+        return identifier;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
     @Override
     public String toString() {
         return identifier.toString();

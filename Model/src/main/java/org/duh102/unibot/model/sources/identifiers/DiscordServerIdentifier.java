@@ -4,6 +4,8 @@ public class DiscordServerIdentifier extends DiscordServiceSpecific implements S
     private String serverName;
     private String serverId;
 
+    public DiscordServerIdentifier() {
+    }
     public DiscordServerIdentifier(String serverName, String serverId) {
         this.serverName = serverName;
         this.serverId = serverId;

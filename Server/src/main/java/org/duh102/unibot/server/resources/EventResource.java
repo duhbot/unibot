@@ -1,4 +1,4 @@
-package org.duh102.unibot.server;
+package org.duh102.unibot.server.resources;
 
 import org.duh102.unibot.model.MessageResponse;
 import org.duh102.unibot.model.events.MessageEvent;
@@ -13,13 +13,32 @@ import java.util.List;
 
 @Path("/event")
 public class EventResource {
-    private List<MessageEventListener> messageEventListeners;
-    private List<PrivateMessageEventListener> privateMessageEventListeners;
+    private final List<MessageEventListener> messageEventListeners;
+    private final List<PrivateMessageEventListener> privateMessageEventListeners;
 
+    public EventResource() {
+        this(new ArrayList<>(), new ArrayList<>());
+    }
     public EventResource(List<MessageEventListener> messageEventListeners,
                          List<PrivateMessageEventListener> privateMessageEventListeners) {
         this.messageEventListeners = messageEventListeners;
         this.privateMessageEventListeners = privateMessageEventListeners;
+    }
+
+    public void setMessageEventListeners(List<MessageEventListener> newListeners) {
+        messageEventListeners.clear();
+        messageEventListeners.addAll(newListeners);
+    }
+    public void clearMessageEventListeners() {
+        messageEventListeners.clear();
+    }
+
+    public void setPrivateMessageEventListeners(List<PrivateMessageEventListener> newListeners) {
+        privateMessageEventListeners.clear();
+        privateMessageEventListeners.addAll(newListeners);
+    }
+    public void clearPrivateMessageEventListeners() {
+        privateMessageEventListeners.clear();
     }
 
     @POST

@@ -1,11 +1,14 @@
 package org.duh102.unibot.model.sources.identifiers;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.duh102.unibot.model.exception.ServiceSpecificUnsupportedException;
 
 public class IRCChannelIdentifier extends IRCServiceSpecific implements ChatChannelIdentifier {
     private String channelName;
     private IRCServerIdentifier serverNetwork;
 
+    public IRCChannelIdentifier() {
+    }
     public IRCChannelIdentifier(String channelName, IRCServerIdentifier serverNetwork) {
         this.channelName = channelName;
         this.serverNetwork = serverNetwork;
@@ -21,11 +24,13 @@ public class IRCChannelIdentifier extends IRCServiceSpecific implements ChatChan
         return serverNetwork;
     }
 
+    @JsonIgnore
     @Override
     public String getReferenceName() throws ServiceSpecificUnsupportedException {
         throw new ServiceSpecificUnsupportedException("IRC does not support channel links");
     }
 
+    @JsonIgnore
     @Override
     public String getUniqueId() throws ServiceSpecificUnsupportedException {
         throw new ServiceSpecificUnsupportedException("IRC does not support unique IDs for channels");

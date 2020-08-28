@@ -1,5 +1,6 @@
 package org.duh102.unibot.model.sources.identifiers;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.duh102.unibot.model.exception.ServiceSpecificUnsupportedException;
 
 public class IRCUserIdentifier extends IRCServiceSpecific implements UserIdentifier {
@@ -7,6 +8,8 @@ public class IRCUserIdentifier extends IRCServiceSpecific implements UserIdentif
     private String username;
     private String host;
 
+    public IRCUserIdentifier() {
+    }
     public IRCUserIdentifier(String nickname, String username, String host) {
         this.nickname = nickname;
         this.username = username;
@@ -47,11 +50,13 @@ public class IRCUserIdentifier extends IRCServiceSpecific implements UserIdentif
         return nickname;
     }
 
+    @JsonIgnore
     @Override
     public String getReferenceName() throws ServiceSpecificUnsupportedException {
         throw new ServiceSpecificUnsupportedException("IRC does not support user links");
     }
 
+    @JsonIgnore
     @Override
     public String getUniqueId() throws ServiceSpecificUnsupportedException {
         throw new ServiceSpecificUnsupportedException("IRC does not support unique IDs for users");

@@ -7,6 +7,8 @@ public class DiscordUserIdentifier extends DiscordServiceSpecific implements Use
     private String username;
     private int discriminator;
 
+    public DiscordUserIdentifier() {
+    }
     public DiscordUserIdentifier(String uniqueID, String username, int discriminator) {
         this.uniqueID = uniqueID;
         this.username = username;

@@ -7,6 +7,8 @@ public class IRCServerIdentifier extends IRCServiceSpecific implements ServerIde
      */
     private String serverName;
 
+    public IRCServerIdentifier() {
+    }
     public IRCServerIdentifier(String serverName) {
         this.serverName = serverName;
     }

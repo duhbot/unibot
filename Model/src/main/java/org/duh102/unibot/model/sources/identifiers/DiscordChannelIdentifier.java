@@ -7,6 +7,8 @@ public class DiscordChannelIdentifier extends DiscordServiceSpecific implements 
     String channelId;
     DiscordServerIdentifier server;
 
+    public DiscordChannelIdentifier() {
+    }
     public DiscordChannelIdentifier(String channelName, String channelId, DiscordServerIdentifier server) {
         this.channelName = channelName;
         this.channelId = channelId;
