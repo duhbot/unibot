@@ -1,14 +1,33 @@
 package org.duh102.unibot.model.sources.identifiers;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.duh102.unibot.model.exception.ServiceSpecificUnsupportedException;
+import org.duh102.unibot.model.serializer.IRCUserDeserializer;
+import org.duh102.unibot.model.serializer.IRCUserSerializer;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+@JsonSerialize(using= IRCUserSerializer.class)
+@JsonDeserialize(using= IRCUserDeserializer.class)
 public class IRCUserIdentifier extends IRCServiceSpecific implements UserIdentifier {
     private String nickname;
     private String username;
     private String host;
+    public static final Pattern IRC_USER_PAT = Pattern.compile("^(?<nick>[^!]+)!(?<name>[^@]+)@(?<host>[^\n \t]+)$");
 
     public IRCUserIdentifier() {
+    }
+    public IRCUserIdentifier(String serializedForm) throws Exception {
+        Matcher match = IRC_USER_PAT.matcher(serializedForm);
+        if(!match.matches()) {
+            throw new Exception(String.format("Invalid user string %s", serializedForm));
+        }
+        nickname = match.group("nick");
+        username = match.group("name");
+        host = match.group("host");
     }
     public IRCUserIdentifier(String nickname, String username, String host) {
         this.nickname = nickname;
@@ -28,12 +47,25 @@ public class IRCUserIdentifier extends IRCServiceSpecific implements UserIdentif
         return host;
     }
 
+    public String getSerializedForm() {
+        return String.format("%s!%s@%s", nickname, username, host);
+    }
+
     @Override
     public int compareTo(UserIdentifier other) {
         if(getServiceIdentifier() != other.getServiceIdentifier()) {
             return getServiceIdentifier().compareTo(other.getServiceIdentifier());
         }
         return toString().compareTo(other.toString());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(! (o instanceof IRCUserIdentifier)) {
+            return false;
+        }
+        IRCUserIdentifier other = (IRCUserIdentifier)o;
+        return this.compareTo(other) == 0;
     }
 
     @Override
