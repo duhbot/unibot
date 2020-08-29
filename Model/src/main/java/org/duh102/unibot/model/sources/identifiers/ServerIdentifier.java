@@ -2,6 +2,8 @@ package org.duh102.unibot.model.sources.identifiers;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import org.duh102.unibot.model.sources.identifiers.discord.DiscordServerIdentifier;
+import org.duh102.unibot.model.sources.identifiers.irc.IRCServerIdentifier;
 
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,

@@ -1,17 +1,20 @@
-package org.duh102.unibot.model.sources.identifiers;
+package org.duh102.unibot.model.sources.identifiers.discord;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.duh102.unibot.model.exception.ServiceSpecificUnsupportedException;
+import org.duh102.unibot.model.sources.identifiers.ChatChannelIdentifier;
+import org.duh102.unibot.model.sources.identifiers.ServerIdentifier;
 
 public class DiscordChannelIdentifier extends DiscordServiceSpecific implements ChatChannelIdentifier {
     String channelName;
-    String channelId;
+    String uniqueId;
     DiscordServerIdentifier server;
 
     public DiscordChannelIdentifier() {
     }
-    public DiscordChannelIdentifier(String channelName, String channelId, DiscordServerIdentifier server) {
+    public DiscordChannelIdentifier(String channelName, String uniqueId, DiscordServerIdentifier server) {
         this.channelName = channelName;
-        this.channelId = channelId;
+        this.uniqueId = uniqueId;
         this.server = server;
     }
 
@@ -26,6 +29,7 @@ public class DiscordChannelIdentifier extends DiscordServiceSpecific implements 
         return server;
     }
 
+    @JsonIgnore
     @Override
     public String getReferenceName() throws ServiceSpecificUnsupportedException {
         return "#" + channelName;
@@ -33,7 +37,7 @@ public class DiscordChannelIdentifier extends DiscordServiceSpecific implements 
 
     @Override
     public String getUniqueId() throws ServiceSpecificUnsupportedException {
-        return channelId;
+        return uniqueId;
     }
 
     @Override

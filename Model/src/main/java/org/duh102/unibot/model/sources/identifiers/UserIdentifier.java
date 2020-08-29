@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.duh102.unibot.model.exception.ServiceSpecificUnsupportedException;
+import org.duh102.unibot.model.sources.identifiers.discord.DiscordUserIdentifier;
+import org.duh102.unibot.model.sources.identifiers.irc.IRCUserIdentifier;
 
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
@@ -34,6 +36,4 @@ public interface UserIdentifier extends Comparable<UserIdentifier>, ServiceSpeci
      * @throws ServiceSpecificUnsupportedException if the backing service does not have such a concept
      */
     String getUniqueId() throws ServiceSpecificUnsupportedException;
-
-    void setUniqueId(String uniqueId) throws ServiceSpecificUnsupportedException;
 }

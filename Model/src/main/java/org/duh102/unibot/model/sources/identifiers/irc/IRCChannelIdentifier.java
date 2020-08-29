@@ -1,17 +1,19 @@
-package org.duh102.unibot.model.sources.identifiers;
+package org.duh102.unibot.model.sources.identifiers.irc;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.duh102.unibot.model.exception.ServiceSpecificUnsupportedException;
+import org.duh102.unibot.model.sources.identifiers.ChatChannelIdentifier;
+import org.duh102.unibot.model.sources.identifiers.ServerIdentifier;
 
 public class IRCChannelIdentifier extends IRCServiceSpecific implements ChatChannelIdentifier {
     private String channelName;
-    private IRCServerIdentifier serverNetwork;
+    private IRCServerIdentifier server;
 
     public IRCChannelIdentifier() {
     }
-    public IRCChannelIdentifier(String channelName, IRCServerIdentifier serverNetwork) {
+    public IRCChannelIdentifier(String channelName, IRCServerIdentifier server) {
         this.channelName = channelName;
-        this.serverNetwork = serverNetwork;
+        this.server = server;
     }
 
     @Override
@@ -21,7 +23,7 @@ public class IRCChannelIdentifier extends IRCServiceSpecific implements ChatChan
 
     @Override
     public ServerIdentifier getServer() {
-        return serverNetwork;
+        return server;
     }
 
     @JsonIgnore
@@ -46,7 +48,7 @@ public class IRCChannelIdentifier extends IRCServiceSpecific implements ChatChan
         if(getServiceIdentifier() != other.getServiceIdentifier()) {
             return this.getServiceIdentifier().compareTo(other.getServiceIdentifier());
         }
-        int serverComparison = serverNetwork.compareTo(other.getServer());
+        int serverComparison = server.compareTo(other.getServer());
         if(serverComparison != 0) {
             return serverComparison;
         }

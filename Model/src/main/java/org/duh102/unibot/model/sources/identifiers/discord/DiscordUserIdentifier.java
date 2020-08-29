@@ -1,6 +1,7 @@
-package org.duh102.unibot.model.sources.identifiers;
+package org.duh102.unibot.model.sources.identifiers.discord;
 
 import org.duh102.unibot.model.exception.ServiceSpecificUnsupportedException;
+import org.duh102.unibot.model.sources.identifiers.UserIdentifier;
 
 public class DiscordUserIdentifier extends DiscordServiceSpecific implements UserIdentifier {
     private String uniqueId;
@@ -18,11 +19,6 @@ public class DiscordUserIdentifier extends DiscordServiceSpecific implements Use
     @Override
     public String getUniqueId() throws ServiceSpecificUnsupportedException {
         return uniqueId;
-    }
-
-    @Override
-    public void setUniqueId(String uniqueId) throws ServiceSpecificUnsupportedException {
-        this.uniqueId = uniqueId;
     }
 
     public String getUsername() {

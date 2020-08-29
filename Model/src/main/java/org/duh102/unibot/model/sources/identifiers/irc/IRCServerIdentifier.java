@@ -1,6 +1,7 @@
-package org.duh102.unibot.model.sources.identifiers;
+package org.duh102.unibot.model.sources.identifiers.irc;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.duh102.unibot.model.sources.identifiers.ServerIdentifier;
 
 public class IRCServerIdentifier extends IRCServiceSpecific implements ServerIdentifier {
 

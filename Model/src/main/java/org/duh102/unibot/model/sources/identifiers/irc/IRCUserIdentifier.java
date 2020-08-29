@@ -1,7 +1,8 @@
-package org.duh102.unibot.model.sources.identifiers;
+package org.duh102.unibot.model.sources.identifiers.irc;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.duh102.unibot.model.exception.ServiceSpecificUnsupportedException;
+import org.duh102.unibot.model.sources.identifiers.UserIdentifier;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -81,12 +82,6 @@ public class IRCUserIdentifier extends IRCServiceSpecific implements UserIdentif
     @JsonIgnore
     @Override
     public String getUniqueId() throws ServiceSpecificUnsupportedException {
-        throw new ServiceSpecificUnsupportedException("IRC does not support unique IDs for users");
-    }
-
-    @JsonIgnore
-    @Override
-    public void setUniqueId(String uniqueId) throws ServiceSpecificUnsupportedException {
         throw new ServiceSpecificUnsupportedException("IRC does not support unique IDs for users");
     }
 }

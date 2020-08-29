@@ -1,7 +1,7 @@
 package org.duh102.unibot.model.serialization;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.duh102.unibot.model.sources.identifiers.IRCServerIdentifier;
+import org.duh102.unibot.model.sources.identifiers.irc.IRCServerIdentifier;
 import org.duh102.unibot.model.sources.identifiers.ServerIdentifier;
 import org.junit.jupiter.api.Test;
 
