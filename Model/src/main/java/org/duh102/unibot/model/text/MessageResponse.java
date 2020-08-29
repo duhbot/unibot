@@ -1,4 +1,4 @@
-package org.duh102.unibot.model;
+package org.duh102.unibot.model.text;
 
 public class MessageResponse {
 

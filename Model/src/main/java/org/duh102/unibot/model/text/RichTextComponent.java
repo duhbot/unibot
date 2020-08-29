@@ -1,7 +1,10 @@
-package org.duh102.unibot.model;
+package org.duh102.unibot.model.text;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import org.duh102.unibot.model.texteffects.TextColor;
+import org.duh102.unibot.model.text.texteffects.SimpleColor;
+import org.duh102.unibot.model.text.texteffects.TextColor;
+
+import java.util.Objects;
 
 public class RichTextComponent {
 
@@ -47,5 +50,16 @@ public class RichTextComponent {
     }
     public void setBackgroundColor(TextColor backgroundColor) {
         this.backgroundColor = backgroundColor;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(! (o instanceof RichTextComponent)) {
+            return false;
+        }
+        RichTextComponent other = (RichTextComponent)o;
+        return rawString.equals(other.getRawString())
+                && Objects.equals(foregroundColor, other.getForegroundColor())
+                && Objects.equals(backgroundColor, other.getBackgroundColor());
     }
 }

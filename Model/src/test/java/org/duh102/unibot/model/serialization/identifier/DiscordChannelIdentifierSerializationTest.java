@@ -1,6 +1,7 @@
-package org.duh102.unibot.model.serialization;
+package org.duh102.unibot.model.serialization.identifier;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.duh102.unibot.model.serialization.SerializationTest;
 import org.duh102.unibot.model.sources.identifiers.ChatChannelIdentifier;
 import org.duh102.unibot.model.sources.identifiers.discord.DiscordChannelIdentifier;
 import org.duh102.unibot.model.sources.identifiers.discord.DiscordServerIdentifier;

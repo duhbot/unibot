@@ -1,4 +1,4 @@
-package org.duh102.unibot.model.texteffects;
+package org.duh102.unibot.model.text.texteffects;
 
 /**
  * We use a 3-bit color palette for the easiest implementation

@@ -1,4 +1,4 @@
-package org.duh102.unibot.model.serialization;
+package org.duh102.unibot.model.serialization.identifier;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

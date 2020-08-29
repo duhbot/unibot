@@ -1,6 +1,7 @@
-package org.duh102.unibot.model.serialization;
+package org.duh102.unibot.model.serialization.identifier;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.duh102.unibot.model.serialization.SerializationTest;
 import org.duh102.unibot.model.sources.identifiers.*;
 import org.duh102.unibot.model.sources.identifiers.irc.IRCChannelIdentifier;
 import org.duh102.unibot.model.sources.identifiers.irc.IRCServerIdentifier;

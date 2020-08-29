@@ -1,7 +1,9 @@
-package org.duh102.unibot.model.texteffects;
+package org.duh102.unibot.model.text.texteffects;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+
+import java.util.Objects;
 
 public class TextColor {
     private TextColorEnum textColor;
@@ -40,5 +42,15 @@ public class TextColor {
         } else {
             return textColor.getColor();
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(! (o instanceof TextColor)) {
+            return false;
+        }
+        TextColor other = (TextColor)o;
+        return textColor == other.getTextColor()
+                && Objects.equals(customColor, other.getCustomColor());
     }
 }
