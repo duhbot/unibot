@@ -1,17 +1,11 @@
 package org.duh102.unibot.model.sources.identifiers;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.duh102.unibot.model.exception.ServiceSpecificUnsupportedException;
-import org.duh102.unibot.model.serializer.IRCUserDeserializer;
-import org.duh102.unibot.model.serializer.IRCUserSerializer;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@JsonSerialize(using= IRCUserSerializer.class)
-@JsonDeserialize(using= IRCUserDeserializer.class)
 public class IRCUserIdentifier extends IRCServiceSpecific implements UserIdentifier {
     private String nickname;
     private String username;
@@ -45,10 +39,6 @@ public class IRCUserIdentifier extends IRCServiceSpecific implements UserIdentif
 
     public String getHost() {
         return host;
-    }
-
-    public String getSerializedForm() {
-        return String.format("%s!%s@%s", nickname, username, host);
     }
 
     @Override
@@ -91,6 +81,12 @@ public class IRCUserIdentifier extends IRCServiceSpecific implements UserIdentif
     @JsonIgnore
     @Override
     public String getUniqueId() throws ServiceSpecificUnsupportedException {
+        throw new ServiceSpecificUnsupportedException("IRC does not support unique IDs for users");
+    }
+
+    @JsonIgnore
+    @Override
+    public void setUniqueId(String uniqueId) throws ServiceSpecificUnsupportedException {
         throw new ServiceSpecificUnsupportedException("IRC does not support unique IDs for users");
     }
 }

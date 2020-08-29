@@ -31,4 +31,8 @@ public class PrivateMessageEvent implements Event {
     public EventSource getContext() {
         return channel;
     }
+
+    public RichText respondTo(RichText text) {
+        return text;
+    }
 }

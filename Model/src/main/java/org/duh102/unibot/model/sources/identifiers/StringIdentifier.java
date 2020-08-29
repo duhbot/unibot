@@ -12,11 +12,6 @@ public class StringIdentifier implements ServiceSpecific {
     }
 
     @Override
-    public String getServiceIdentifierString() {
-        return getServiceIdentifier().name();
-    }
-
-    @Override
     public ServiceIdentifier getServiceIdentifier() {
         return ServiceIdentifier.GENERIC;
     }

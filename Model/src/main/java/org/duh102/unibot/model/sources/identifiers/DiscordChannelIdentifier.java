@@ -52,4 +52,13 @@ public class DiscordChannelIdentifier extends DiscordServiceSpecific implements 
         }
         return channelName.compareTo(other.getChannelName());
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(! (o instanceof DiscordChannelIdentifier)) {
+            return false;
+        }
+        DiscordChannelIdentifier other = (DiscordChannelIdentifier)o;
+        return this.compareTo(other) == 0;
+    }
 }

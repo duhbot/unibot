@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class RichText {
-
     private List<RichTextComponent> components;
 
     public RichText() {
@@ -15,6 +14,11 @@ public class RichText {
     }
     public RichText(List<RichTextComponent> components) {
         this.components = components;
+    }
+    public RichText(RichText beginning, RichText theRest) {
+        components = new ArrayList<>();
+        components.addAll(beginning.getComponents());
+        components.addAll(theRest.getComponents());
     }
     public RichText(String text) {
         components = Collections.singletonList(new RichTextComponent(text));

@@ -1,5 +1,6 @@
 package org.duh102.unibot.model.sources.identifiers;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.duh102.unibot.model.exception.ServiceSpecificUnsupportedException;
@@ -17,12 +18,14 @@ public interface UserIdentifier extends Comparable<UserIdentifier>, ServiceSpeci
      * Get the nice display name for a user
      * @return A string display name for the user
      */
+    @JsonIgnore
     String getDisplayName();
 
     /**
      * Get the "linkable" version of the user id
      * @return A string that contains the "linkable" version of the user id
      */
+    @JsonIgnore
     String getReferenceName() throws ServiceSpecificUnsupportedException;
 
     /**
@@ -31,4 +34,6 @@ public interface UserIdentifier extends Comparable<UserIdentifier>, ServiceSpeci
      * @throws ServiceSpecificUnsupportedException if the backing service does not have such a concept
      */
     String getUniqueId() throws ServiceSpecificUnsupportedException;
+
+    void setUniqueId(String uniqueId) throws ServiceSpecificUnsupportedException;
 }

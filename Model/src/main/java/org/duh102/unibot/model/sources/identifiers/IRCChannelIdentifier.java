@@ -52,4 +52,13 @@ public class IRCChannelIdentifier extends IRCServiceSpecific implements ChatChan
         }
         return channelName.compareTo(other.getChannelName());
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(! (o instanceof IRCChannelIdentifier)) {
+            return false;
+        }
+        IRCChannelIdentifier other = (IRCChannelIdentifier)o;
+        return this.compareTo(other) == 0;
+    }
 }

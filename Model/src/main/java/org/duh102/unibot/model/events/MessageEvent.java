@@ -11,4 +11,10 @@ public class MessageEvent extends PrivateMessageEvent {
     public MessageEvent(ChatChannel channel, User source, RichText message) {
         super(channel, source, message);
     }
+
+    @Override
+    public RichText respondTo(RichText text) {
+        String beginning = String.format("%s: ", getSource().getUserId().getDisplayName());
+        return new RichText(new RichText(beginning), text);
+    }
 }
