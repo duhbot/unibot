@@ -1,4 +1,4 @@
-package org.duh102.unibot.model.serialization.texteffects;
+package org.duh102.unibot.model.serialization.text;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.duh102.unibot.model.text.MessageResponse;
