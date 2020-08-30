@@ -1,8 +1,6 @@
 package org.duh102.unibot.model.serialization.texteffects;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.duh102.unibot.model.sources.identifiers.UserIdentifier;
-import org.duh102.unibot.model.sources.identifiers.irc.IRCUserIdentifier;
 import org.duh102.unibot.model.text.MessageResponse;
 import org.duh102.unibot.model.text.RichText;
 import org.duh102.unibot.model.text.RichTextComponent;
@@ -48,5 +46,12 @@ public class TextSerializationTest extends SerializationTest {
         String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(text);
         RichText temp = mapper.readValue(json, RichText.class);
         assertThat(temp).isInstanceOf(RichText.class).isEqualTo(text);
+    }
+
+    @Test
+    public void testMessageResponseRoundTrip() throws JsonProcessingException {
+        String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(messageResponse);
+        MessageResponse temp = mapper.readValue(json, MessageResponse.class);
+        assertThat(temp).isInstanceOf(MessageResponse.class).isEqualTo(messageResponse);
     }
 }

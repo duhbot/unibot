@@ -2,6 +2,8 @@ package org.duh102.unibot.model.sources;
 
 import org.duh102.unibot.model.sources.identifiers.UserIdentifier;
 
+import java.util.Objects;
+
 public class User implements EventSource {
     private UserIdentifier userId;
 
@@ -16,5 +18,14 @@ public class User implements EventSource {
     
     public UserIdentifier getUserId() {
         return userId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(! (o instanceof User)) {
+            return false;
+        }
+        User other = (User)o;
+        return Objects.equals(userId, other.getUserId());
     }
 }
