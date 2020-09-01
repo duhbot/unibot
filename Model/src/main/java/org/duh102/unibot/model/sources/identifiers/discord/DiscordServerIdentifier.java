@@ -3,6 +3,8 @@ package org.duh102.unibot.model.sources.identifiers.discord;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.duh102.unibot.model.sources.identifiers.ServerIdentifier;
 
+import java.util.Objects;
+
 public class DiscordServerIdentifier extends DiscordServiceSpecific implements ServerIdentifier {
     private String serverName;
     private String serverId;
@@ -62,5 +64,10 @@ public class DiscordServerIdentifier extends DiscordServiceSpecific implements S
         }
         DiscordServerIdentifier other = (DiscordServerIdentifier)o;
         return this.compareTo(other) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(serverId, serverName);
     }
 }

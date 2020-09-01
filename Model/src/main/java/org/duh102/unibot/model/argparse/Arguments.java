@@ -8,6 +8,7 @@ import org.duh102.unibot.model.text.RichTextComponent;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Arguments {
     Map<RichTextComponent, Object> arguments;
@@ -32,6 +33,10 @@ public class Arguments {
             return (T) value;
         }
         throw new ArgumentNotRightTypeException(key, typeClass);
+    }
+
+    public Map<RichTextComponent, Object> getArguments() {
+        return arguments;
     }
 
     public RichText getRichText(RichTextComponent key) throws ArgumentNotFoundException {
@@ -72,5 +77,19 @@ public class Arguments {
         public Arguments build() {
             return new Arguments(arguments);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(! (o instanceof Arguments)) {
+            return false;
+        }
+        Arguments other = (Arguments)o;
+        return Objects.equals(arguments, other.getArguments());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(arguments);
     }
 }

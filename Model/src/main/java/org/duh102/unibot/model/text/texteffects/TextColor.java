@@ -53,4 +53,9 @@ public class TextColor {
         return textColor == other.getTextColor()
                 && Objects.equals(customColor, other.getCustomColor());
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(textColor, customColor);
+    }
 }

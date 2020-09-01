@@ -34,4 +34,9 @@ public class MessageResponse {
         MessageResponse other = (MessageResponse)o;
         return Objects.equals(message, other.getMessage());
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(message);
+    }
 }

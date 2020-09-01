@@ -3,6 +3,8 @@ package org.duh102.unibot.model.sources.identifiers.irc;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.duh102.unibot.model.sources.identifiers.ServerIdentifier;
 
+import java.util.Objects;
+
 public class IRCServerIdentifier extends IRCServiceSpecific implements ServerIdentifier {
 
     /**
@@ -57,5 +59,10 @@ public class IRCServerIdentifier extends IRCServiceSpecific implements ServerIde
         }
         IRCServerIdentifier other = (IRCServerIdentifier)o;
         return this.compareTo(other) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(serverName);
     }
 }

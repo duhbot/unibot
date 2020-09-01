@@ -3,6 +3,7 @@ package org.duh102.unibot.model.text.texteffects;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.base.Objects;
 import org.duh102.unibot.model.sources.identifiers.irc.IRCChannelIdentifier;
 
 import java.awt.*;
@@ -59,5 +60,10 @@ public class SimpleColor {
         return this.blue == other.getBlue()
                 && this.green == other.getGreen()
                 && this.red == other.getRed();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(red, blue, green);
     }
 }

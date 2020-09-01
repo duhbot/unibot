@@ -28,4 +28,9 @@ public class User implements EventSource {
         User other = (User)o;
         return Objects.equals(userId, other.getUserId());
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userId);
+    }
 }

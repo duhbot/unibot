@@ -5,6 +5,8 @@ import org.duh102.unibot.model.exception.ServiceSpecificUnsupportedException;
 import org.duh102.unibot.model.sources.identifiers.ChatChannelIdentifier;
 import org.duh102.unibot.model.sources.identifiers.ServerIdentifier;
 
+import java.util.Objects;
+
 public class DiscordChannelIdentifier extends DiscordServiceSpecific implements ChatChannelIdentifier {
     String channelName;
     String uniqueId;
@@ -64,5 +66,10 @@ public class DiscordChannelIdentifier extends DiscordServiceSpecific implements 
         }
         DiscordChannelIdentifier other = (DiscordChannelIdentifier)o;
         return this.compareTo(other) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(server, channelName, uniqueId);
     }
 }

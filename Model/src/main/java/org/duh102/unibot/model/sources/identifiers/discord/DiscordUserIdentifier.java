@@ -3,6 +3,8 @@ package org.duh102.unibot.model.sources.identifiers.discord;
 import org.duh102.unibot.model.exception.ServiceSpecificUnsupportedException;
 import org.duh102.unibot.model.sources.identifiers.UserIdentifier;
 
+import java.util.Objects;
+
 public class DiscordUserIdentifier extends DiscordServiceSpecific implements UserIdentifier {
     private String uniqueId;
     private String username;
@@ -67,5 +69,10 @@ public class DiscordUserIdentifier extends DiscordServiceSpecific implements Use
         }
         DiscordUserIdentifier other = (DiscordUserIdentifier)o;
         return this.compareTo(other) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(uniqueId, username, discriminator);
     }
 }

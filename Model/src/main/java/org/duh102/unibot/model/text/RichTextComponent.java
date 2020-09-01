@@ -62,4 +62,9 @@ public class RichTextComponent {
                 && Objects.equals(foregroundColor, other.getForegroundColor())
                 && Objects.equals(backgroundColor, other.getBackgroundColor());
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(rawString, foregroundColor, backgroundColor);
+    }
 }

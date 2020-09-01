@@ -5,6 +5,8 @@ import org.duh102.unibot.model.exception.ServiceSpecificUnsupportedException;
 import org.duh102.unibot.model.sources.identifiers.ChatChannelIdentifier;
 import org.duh102.unibot.model.sources.identifiers.ServerIdentifier;
 
+import java.util.Objects;
+
 public class IRCChannelIdentifier extends IRCServiceSpecific implements ChatChannelIdentifier {
     private String channelName;
     private IRCServerIdentifier server;
@@ -62,5 +64,10 @@ public class IRCChannelIdentifier extends IRCServiceSpecific implements ChatChan
         }
         IRCChannelIdentifier other = (IRCChannelIdentifier)o;
         return this.compareTo(other) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(channelName, server);
     }
 }

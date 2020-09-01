@@ -51,4 +51,9 @@ public class RichText {
         RichText other = (RichText)o;
         return Objects.equals(getComponents(), other.getComponents());
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(components);
+    }
 }

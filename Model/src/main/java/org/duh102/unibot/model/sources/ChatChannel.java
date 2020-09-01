@@ -43,4 +43,9 @@ public class ChatChannel implements EventSource {
         return Objects.equals(identifier, other.getIdentifier())
                 && Objects.equals(users, other.getUsers());
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(identifier, users);
+    }
 }
